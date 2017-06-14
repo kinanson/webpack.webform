@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="app\ajaxData.js" />
     <Content Include="app\index.js" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -150,6 +151,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="package.json" />
+    <Content Include=".babelrc" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
