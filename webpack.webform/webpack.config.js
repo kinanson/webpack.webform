@@ -3,7 +3,8 @@
 
 const webpackConfig = {
     entry: {
-        app: ['./app/index.js','./app/about.js']
+        index: ['./app/index.js'],
+        about: ['./app/about.js']
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -14,7 +15,7 @@ const webpackConfig = {
         rules: [
             {
                 test: /\.js$/,
-                loader: 'babel-loader',//js需要經過babel的轉譯
+                loader: 'babel-loader',
                 include: [path.join(__dirname, 'app')]
             }
         ]
