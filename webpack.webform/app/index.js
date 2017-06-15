@@ -1,4 +1,5 @@
-﻿import ajaxData from './ajaxData';
+﻿import './index.scss';
+import ajaxData from './ajaxData';
 
 $(function(){
     
