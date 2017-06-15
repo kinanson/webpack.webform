@@ -3,6 +3,7 @@ import ajaxData from './ajaxData';
 import manPng from './img/man.png';
 
 $(function(){
+    console.log(process.env.API_URL);
     let $app = $('#app');
 
     let iteratorList = `

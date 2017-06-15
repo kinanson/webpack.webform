@@ -72,9 +72,21 @@ const webpackConfig = {
 };
 
 switch (process.env.NODE_ENV) {
+    case 'dev':
+        webpackConfig.plugins.push(new webpack.DefinePlugin({
+            'process.env': {
+                'API_URL': '"http://localhost"'
+            }
+        }));
+        break;
     case 'prod':
         rimraf(path.join(__dirname, 'dist'), () => console.log('success remove'));
         webpackConfig.devtool = "#source-map";
+        webpackConfig.plugins.push(new webpack.DefinePlugin({
+            'process.env': {
+                'API_URL': '"http://google"'
+            }
+        }));
         break;
 }
 
