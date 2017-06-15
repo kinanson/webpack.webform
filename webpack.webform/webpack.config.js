@@ -1,8 +1,9 @@
 ﻿const path = require('path'),
     webpack = require('webpack'),
+    rimraf = require('rimraf'),
     ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const extractCss = new ExtractTextPlugin('[name].css'); //隨著import的檔名輸出css檔案
+const extractCss = new ExtractTextPlugin('[name].css');
 
 const webpackConfig = {
     entry: {
@@ -23,18 +24,32 @@ const webpackConfig = {
             },
             {
                 test: /\.css$/,
-                use: extractCss.extract(["css-loader"])
+                use: extractCss.extract(
+                    {
+                        loader: "css-loader",
+                        options: { sourceMap: true }
+                    }
+                )
             },
             {
                 test: /\.scss$/,
-                use: extractCss.extract(["css-loader", "sass-loader"])
+                use: extractCss.extract({
+                    use: [
+                        {
+                            loader: "css-loader",
+                            options: { sourceMap: true }
+                        }, {
+                            loader: "sass-loader",
+                            options: { sourceMap: true }
+                        }]
+                })
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: 'img/[name].[ext]' //小於10000byte的話，直接使用data url的方式，而不會下載檔案
+                    name: 'img/[name].[ext]'
                 }
             },
             {
@@ -50,9 +65,17 @@ const webpackConfig = {
     resolve: {
         extensions: ['.js'],
     },
+    devtool: '#cheap-module-eval-source-map',
     plugins: [
-        extractCss //放進此plugins
+        extractCss
     ]
 };
 
-module.exports = webpackConfig
+switch (process.env.NODE_ENV) {
+    case 'prod':
+        rimraf(path.join(__dirname, 'dist'), () => console.log('success remove'));
+        webpackConfig.devtool = "#source-map";
+        break;
+}
+
+module.exports = webpackConfig;

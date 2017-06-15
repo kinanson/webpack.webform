@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./app/app/index.scss"],"names":[],"mappings":"AAAA,aACI,WACA,wBAA0B","file":"index.css","sourcesContent":[".table-title{\r\n    color:white;\r\n    background-color:cadetblue;\r\n}\n\n\n// WEBPACK FOOTER //\n// ./app/app/index.scss"],"sourceRoot":""}
