@@ -1,5 +1,6 @@
 ﻿import './index.scss';
 import ajaxData from './ajaxData';
+import manPng from './img/man.png';
 
 $(function(){
     
@@ -19,10 +20,18 @@ $(function(){
          <tr>
                 <td>${item.id}</td>
                 <td>${item.name}</td>
-                <td>${item.gender}</td>
+                <td>${getGender(item.gender)}</td>
             </tr>
         `
     });
+
+    //多增加新的方法，來決定要回傳哪張圖片，這邊也可以定義import的方式，manPng像是我上面定義的變數
+    function getGender(gender){
+        if(gender==='body'){
+            return `<img src="${manPng}"/>`
+        }
+        return `<img src="${require('./img/woman.png')}"/>`
+    }
 
 
     iteratorList += '</table>';

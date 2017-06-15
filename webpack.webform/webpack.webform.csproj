@@ -138,6 +138,8 @@
     <Content Include="About.aspx" />
     <Content Include="app\about.js" />
     <Content Include="app\ajaxData.js" />
+    <Content Include="app\img\man.png" />
+    <Content Include="app\img\woman.png" />
     <Content Include="app\index.js" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />

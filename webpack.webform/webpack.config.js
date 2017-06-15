@@ -23,11 +23,27 @@ const webpackConfig = {
             },
             {
                 test: /\.css$/,
-                use: extractCss.extract([ "css-loader"])//包裝loader以便輸出css，style-loader在此就要拿掉了，因為我們不需要在js裡面使用css了，不拿掉的話會出錯
+                use: extractCss.extract(["css-loader"])
             },
             {
                 test: /\.scss$/,
-                use: extractCss.extract(["css-loader", "sass-loader"])//包裝loader以便輸出css，style-loader在此就要拿掉了，因為我們不需要在js裡面使用css了，不拿掉的話會出錯
+                use: extractCss.extract(["css-loader", "sass-loader"])
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'img/[name].[ext]' //小於10000byte的話，直接使用data url的方式，而不會下載檔案
+                }
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'fonts/[name].[ext]'
+                }
             }
         ]
     },
